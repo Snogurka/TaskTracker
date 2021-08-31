@@ -4,23 +4,53 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <title>Not Another Task Tracker</title>
 </head>
 <body>
-  <h1>TO DO</h1>
-  <ul>
-    <li>Task 1</li>
-    <li>Task 2</li>
-    <li>Task 3</li>
-    <li>Task 4</li>
-    <li>Task 5</li>
-    <li>Task 6</li>
-    <li>Task 7</li>
-    <li>Task 8</li>
-    <li>Task 9</li>
-    <li>Task 10</li>
-    <li>Task 11</li>
+  <h1>My To Do List</h1>
+  <button id="rollUp" class="btn"></button>
+
+  <ul id="taskList">
+    <li class="task">Task 1</li>
+    <li class="task">Task 2</li>
+    <li class="task">Task 3</li>
+    <li class="task">Task 4</li>
+    <li class="task">Task 5</li>
+    <li class="task">Task 6</li>
+    <li class="task">Task 7</li>
+    <li class="task">Task 8</li>
+    <li class="task">Task 9</li>
+    <li class="task">Task 10</li>
+    <li class="task">Task 11</li>
+    <li class="task">Task 12</li>
+    <li class="task">Task 13</li>
+    <li class="task">Task 14</li>
+    <li class="task">Task 15</li>
   </ul>
 
+  <form action="" class="taskWindow" id="taskEntry">
+    <input type="text" name="taskName" id="taskName" placeholder="Task Name">
+
+    <div class="colorButtons">
+      <button id="btnRed">&nbsp;</button>
+      <button id="btnOrange">&nbsp;</button>
+      <button id="btnYellow">&nbsp;</button>
+      <button id="btnGreen">&nbsp;</button>
+      <button id="btnBlue">&nbsp;</button>
+      <button id="btnPurple">&nbsp;</button>
+      <button id="btnCustom">&nbsp;</button>
+      <button id="btnSnow">❄️</button>
+      <button id="btnSnow">🌼</button>
+    </div>
+    <label for="dateDue">Due: </label>
+    <input type="date" name="dateDue" id="dateDue">
+    <button id="btnDelete">&times;</button>
+
+    <textarea name="taskText" id="taskText"></textarea>
+    <div class="dateModified"></div>
+  </form>
+
+  <button id="rollDn" class="btn"></button>
 </body>
 </html>
