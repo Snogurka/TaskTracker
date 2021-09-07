@@ -4,15 +4,22 @@
   padding: 0;
 }
 
+:root {
+  --main-btn-color:rgb(128, 128, 0);
+  --main-bg-color:rgb(22, 14, 56);
+}
+
 button, input, select, textarea {
   font-family: inherit;
   font-size: 100%;
 }
 
 body {
-  background-color: rgb(22, 14, 56);
-  color: snow;
+  background-color: var(--main-bg-color);
+  color: #fffafa;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 h1 {
@@ -27,36 +34,69 @@ h1 {
   height: 30vh;
   overflow-y: scroll;
   width: 90vw;
-  margin: 0 auto 3vw 5vw;
+  margin: 0 auto 1vw 5vw;
   padding: 1em;
 }
 
+/* TASK LIST PANE */
 .task {
   list-style: none;
-  padding: 1%;
-  border: 1px solid olive;
+  padding: 1.5vh;
+  border: 1px solid var(--main-btn-color);
   border-collapse: collapse;
   border-radius: 7px;
-  width: 100%;  
+  width: 100%; 
+  /* max-height: 3em;  */
 }
 
 .task:hover {
   background-color: rgb(29, 69, 141);
 }
 
+.btnDelete {
+  float: right;
+  background: none;
+  border: none;
+  font-size: smaller;
+  margin: 0 0.5em;
+}
+
+.dueDateText {
+  /* position: absolute; */
+  float: right;
+  margin: 0 1em;
+  color: gray;
+}
+
+/* TASK ENTRY PANE */
 #taskEntry {
-  height: 60vh;
   display: grid;
+  height: 70vh;
   grid-template-columns: repeat(15,1fr);
   grid-auto-rows: 2em;
+  overflow: hidden;
+  overflow: -moz-hidden-unscrollable;
+}
+
+#taskEntry button {
+  cursor: pointer;
+  width: 2em;
+  height: 2em;
+  border-radius: 30%;
+  margin-top: 0.5em;
+  vertical-align: top;
+  /* border: 1px solid var(--main-bg-color); */
 }
 
 #taskName, #taskText {
   border: none;
-  background-color: rgba(64,64,64,0.7);
+
+  /* background-color: rgba(64,64,64,0.7); */
+  background-image: url("blackPaperLg.png");
+  
   font-size: 16px;
-  color: snow;
-  padding: 1%;
+  color: #fffafa;
+  padding: 1.5vh;
   border-radius: 7px;
   grid-column-end: 16;
 }
@@ -70,108 +110,127 @@ h1 {
 #taskText {
   grid-column-start: 3;
   grid-row-start: 4;
-  grid-row-end: 13;
+  grid-row-end: 11;
   font-size: 16px;
   overflow: auto;
 }
 
-#taskEntry button {
-  cursor: pointer;
-  width: 2em;
-  height: 2em;
-  border-radius: 30%;
-  margin-top: 0.5em;
-}
-
-.colorButtons {
+#colorButtons {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 2;
   grid-row-end: 11;
 }
-#btnRed {background-color: red;}
-#btnRed {background-image: radial-gradient(red, rgba(0,0,0,0));}
 
-#btnOrange {background-color: orange;}
-#btnYellow {background-color: yellow;}
-#btnGreen {background-color: darkgreen;}
-#btnBlue {background-color: blue;}
-#btnPurple {background-color: purple;}
-#btnCustom {background-color: white;}
+#btnRed {background-color: #ff0000}
+#btnOrange {background-color: #ff8c00;}
+#btnYellow {background-color: #ffee00;}
+#btnGreen {background-color: #427d1f;}
+#btnBlue {background-color: #0000ff;}
+#btnPurple {background-color: #671d85;}
+/* #btnColorPick {background-color: #fffafa;} */
+/* #btnColorPick > p {display: inline; z-index: 1;} */
+#btnColorPick {
+  background-image: url(colorPallette.png);
+  background-repeat: no-repeat;
+}
+#btnColorPick > input {
+  opacity: 0; 
+  /* z-index: 2; */
+  /* background-image: url(leadfavicon.png); */
+}
+
+#btnColorDisplay {
+  /* background-color: rgba(22, 14, 56, 0); */
+  border-left: 1em solid var(--main-bg-color);
+  border-right: 1em solid var(--main-bg-color);
+  border-top: none;
+  border-bottom: 1em solid var(--main-btn-color); 
+}
+
+label, #dueDate, #btnClear, #btnSave {
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
 
 label {  
   grid-column-start: 3;
   grid-column-end: 4;
-  grid-row-start: 2;
-  grid-row-end: 3;
   margin-top: 1em;
+  justify-self: center;
 }
 
-#dateDue {
+#dueDate {
   grid-column-start: 4;
   grid-column-end: 7;
-  grid-row-start: 2;
-  grid-row-end: 3;
   font-size: 16px;
   border-radius: 7px;
   padding: 3px;
   margin-top: 0.5em;
   height: 2em;
-  width: 10em;
+  width: 9.5em;
 }
-#btnDelete {
-  grid-column-start: 15;
-  grid-column-end: 16;
-  grid-row-start: 2;
-  grid-row-end: 3;
-  right: 0;
-  color: red;
+
+#btnSave {
+  grid-column-start: 14;
+  grid-column-end: 15;
   justify-self: end;
 }
-#dateModified {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  user-select: none;
-  -webkit-user-select: none;
+
+#btnClear {
+  grid-column-start: 15;
+  grid-column-end: 16;
+  justify-self: end;
 }
 
 #rollUp, #rollDn {
-  right: 1em;
-  position: fixed;
+  right: 0;
+  position: absolute;
   width: 0; 
   height: 0; 
-  border-left: 1em solid rgb(22, 14, 56);
-  border-right: 1em solid rgb(22, 14, 56);
+  border-left: 1em solid var(--main-bg-color);
+  border-right: 1em solid var(--main-bg-color);
 }
 
 #rollUp {
+  top: 10vh;
   border-top: none;
-  border-bottom: 1.1em solid snow; 
+  border-bottom: 1em solid var(--main-btn-color); 
 }
 #rollDn {
-  bottom: 0;
-  border-top: 1.1em solid snow;
+  bottom: 5vh;
+  border-top: 1em solid var(--main-btn-color);
   border-bottom: none;
 }
+/* ...put back here... */
 
 @media only screen and (min-width: 768px) {
-  .colorButtons {
-    border-color: greenyellow;
+  #colorButtons {
     grid-column-start: 1;
-    grid-column-end: 9;
+    grid-column-end: 10;
     grid-row-start: 2;
     grid-row-end: 3;
   }
   #taskText {
     grid-column-start: 1;
+    grid-row-end: 14;
   }
   label {  
-    grid-column-start: 11;
-    grid-column-end: 12;
+    grid-column-start: 10;
+    grid-column-end: 11;
   }
-  #dateDue {
-    grid-column-start: 12;
-    grid-column-end: 15;
+  #dueDate {
+    grid-column-start: 11;
+    grid-column-end: 14;
+    justify-self: center;
+  }
+  #rollUp, #rollDn {
+    right: 1em;
+  }
+  #btnColorDisplay {
+    border-left: none;
+    border-right: 1em solid var(--main-btn-color);
+    border-top: 1em solid var(--main-bg-color);
+    border-bottom:  1em solid var(--main-bg-color);
   }
 }

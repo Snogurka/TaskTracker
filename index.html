@@ -5,52 +5,42 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <title>Not Another Task Tracker</title>
+  <title>Task Tracker</title>
 </head>
 <body>
-  <h1>My To Do List</h1>
-  <button id="rollUp" class="btn"></button>
+  <h1>To Do</h1>
+  <button id="rollUp" class="btn" onclick="toggleTaskPane(event.target)"></button>
 
-  <ul id="taskList">
-    <li class="task">Task 1</li>
-    <li class="task">Task 2</li>
-    <li class="task">Task 3</li>
-    <li class="task">Task 4</li>
-    <li class="task">Task 5</li>
-    <li class="task">Task 6</li>
-    <li class="task">Task 7</li>
-    <li class="task">Task 8</li>
-    <li class="task">Task 9</li>
-    <li class="task">Task 10</li>
-    <li class="task">Task 11</li>
-    <li class="task">Task 12</li>
-    <li class="task">Task 13</li>
-    <li class="task">Task 14</li>
-    <li class="task">Task 15</li>
+  <ul id="taskList" onclick="taskListResponse(event.target)">
+    <!-- <li class="task">Task 1<button class="btnDelete">🗑</button></li> -->
   </ul>
 
   <form action="" class="taskWindow" id="taskEntry">
     <input type="text" name="taskName" id="taskName" placeholder="Task Name">
 
-    <div class="colorButtons">
-      <button id="btnRed">&nbsp;</button>
-      <button id="btnOrange">&nbsp;</button>
-      <button id="btnYellow">&nbsp;</button>
-      <button id="btnGreen">&nbsp;</button>
-      <button id="btnBlue">&nbsp;</button>
-      <button id="btnPurple">&nbsp;</button>
-      <button id="btnCustom">&nbsp;</button>
+    <div id="colorButtons" onclick="changeColors(event)">
+      <button id="btnRed"></button>
+      <button id="btnOrange"></button>
+      <!-- <button id="btnYellow"></button> -->
+      <!-- <button id="btnGreen">&nbsp;</button> -->
+      <button id="btnBlue"></button>
+      <!-- <button id="btnPurple">&nbsp;</button> -->
+      <button id="btnColorPick"><input type="color" onchange="changeColors(event,true)"></button>
       <button id="btnSnow">❄️</button>
-      <button id="btnSnow">🌼</button>
+      <button id="btnFlower">🌼</button>
+      <button id="btnColorDisplay"></button>
     </div>
-    <label for="dateDue">Due: </label>
-    <input type="date" name="dateDue" id="dateDue">
-    <button id="btnDelete">&times;</button>
+
+    <label for="dueDate">Due: </label>
+    <input type="date" name="dueDate" id="dueDate">
+    
+    <button id="btnSave" onclick="saveTask(event)">💾</button>
+    <button id="btnClear" onclick="clearTaskEntry(event)">🗑</button>
 
     <textarea name="taskText" id="taskText"></textarea>
-    <div class="dateModified"></div>
   </form>
 
-  <button id="rollDn" class="btn"></button>
+  <button id="rollDn" class="btn" onclick="toggleTaskPane(event.target)"></button>
 </body>
+<script src="main.js"></script>
 </html>
